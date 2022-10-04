@@ -1,0 +1,47 @@
+import RPi .GPIO a s GPIO
+import time
+3 from pinOut import ∗
+5 #Se t GPIO t o board numbering
+GPIO. setmode (GPIO.BCM)
+7 GPIO. s e t w a r ni n g s ( F al s e )
+9 #D e fi n e Pins
+l a t c h = l a t c h T u r r e t
+11 cl k = cl k T u r r e t
+e n a bl e = enSe rTu r re t
+13 data = d a t aTu r re t
+15 #Setup Pin s
+GPIO. se t up ( 2 , GPIO.OUT) #Enable D rive
+17 GPIO. se t up ( l a t c h , GPIO.OUT) #Latch
+GPIO. se t up ( cl k , GPIO.OUT) #cl k
+19 GPIO. se t up ( en able , GPIO.OUT) #Enable
+GPIO. se t up ( data , GPIO.OUT) #Data
+
+GPIO. se t up ( en ableTu r re t ,GPIO.OUT)
+GPIO. output ( en ableTu r re t , 0 )
+GPIO. output ( en able , 0 )
+d e f update ( l a t c h S t a t e ) :
+GPIO. output ( l a t c h , 0 )
+GPIO. output ( data , 0 )
+f o r i i n r an ge ( 0 , 7 ) :
+GPIO. output ( cl k , 0 )
+i f l a t c h S t a t e [ i ] == 0 :
+GPIO. output ( data , 1 )
+e l i f l a t c h S t a t e [ i ] == 1 :
+GPIO. output ( data , 0 )
+GPIO. output ( cl k , 1 )
+GPIO. output ( l a t c h , 1 )
+time . s l e e p ( 0. 0 0 0 8 )
+f o r i i n r an ge ( 0 , 2 0 ) :
+GPIO. output ( en ableTu r re t , 1 )
+update ( [ 1 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ] )
+update ( [ 1 , 0 , 0 , 0 , 0 , 1 , 0 , 0 ] )
+update ( [ 0 , 0 , 0 , 0 , 0 , 1 , 0 , 0 ] )
+update ( [ 0 , 0 , 0 , 0 , 0 , 1 , 1 , 0 ] )
+update ( [ 0 , 0 , 0 , 0 , 0 , 0 , 1 , 0 ] )
+update ( [ 0 , 0 , 0 , 0 , 0 , 0 , 1 , 1 ] )
+76
+D.1. MOTOR CONTROL APPENDIX D. CONTROL CODE
+57 update ( [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 1 ] )
+update ( [ 1 , 0 , 0 , 0 , 0 , 0 , 0 , 1 ] )
+59
+GPIO. output ( en ableTu r re t , 0 )
